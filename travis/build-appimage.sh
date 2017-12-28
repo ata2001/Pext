@@ -33,6 +33,11 @@ bash Miniconda3-latest-Linux-x86_64.sh -b -p AppDir/usr -f
 # activate Miniconda environment
 . AppDir/usr/bin/activate
 
+# Check if miniconda is set up right
+SSLFILE=$(python3 -c 'import _ssl; print(_ssl.__file__)')
+echo "${SSLFILE}"
+ldd "${SSLFILE}"
+
 # install dependencies
 pip install PyQt5==5.8 PyOpenGL PyOpenGL_accelerate dulwich
 
@@ -102,9 +107,6 @@ chmod +x appimagetool-x86_64.AppImage
 
 # build AppImage
 squashfs-root/AppRun AppDir
-
-# Test
-./Pext-x86_64.AppImage --install-module=https://github.com/Pext/pext_module_emoji
 
 # move AppImage back to old CWD
 mv Pext-*.AppImage* "$OLD_CWD"/
