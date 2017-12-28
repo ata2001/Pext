@@ -20,9 +20,6 @@ cleanup () {
 
 trap cleanup EXIT
 
-# curl test
-curl https://github.com/Pext/pext_module_emoji > test
-
 # store repo root as variable
 REPO_ROOT=$(readlink -f $(dirname $(dirname "$0")))
 OLD_CWD=$(readlink -f .)
@@ -105,6 +102,9 @@ chmod +x appimagetool-x86_64.AppImage
 
 # build AppImage
 squashfs-root/AppRun AppDir
+
+# Test
+./Pext-x86_64.AppImage --install-module=https://github.com/Pext/pext_module_emoji
 
 # move AppImage back to old CWD
 mv Pext-*.AppImage* "$OLD_CWD"/
