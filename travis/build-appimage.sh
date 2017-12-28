@@ -54,7 +54,7 @@ popd
 
 # copy resources to AppDir
 cp "$REPO_ROOT"/pext.desktop "$REPO_ROOT"/pext/images/scalable/pext.svg AppDir
-sed -i 's|Exec=.*|Exec=SSL_CERT_DIR=$(openssl version -d \| awk "{print $2}") usr/bin/python usr/bin/pext|' AppDir/pext.desktop
+sed -i 's|Exec=.*|Exec=SSL_CERT_DIR="$(openssl version -d \| awk "{print $2}")" usr/bin/python usr/bin/pext|' AppDir/pext.desktop
 
 # copy in libraries
 wget https://raw.githubusercontent.com/AppImage/AppImages/master/functions.sh
