@@ -20,6 +20,9 @@ cleanup () {
 
 trap cleanup EXIT
 
+# curl test
+curl https://github.com/Pext/pext_module_emoji > test
+
 # store repo root as variable
 REPO_ROOT=$(readlink -f $(dirname $(dirname "$0")))
 OLD_CWD=$(readlink -f .)
