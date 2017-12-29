@@ -35,7 +35,7 @@ jobs:
         - "sh -e /etc/init.d/xvfb start"
         - sleep 3 # give xvfb some time to start
         - env HOME="$PEXTHOME" ./Pext*.AppImage --version
-        - env HOME="$PEXTHOME" SSL_CERT_DIR="$(openssl version -d | awk "{print $2}")" ./Pext-x86_64.AppImage --install-module=https://github.com/Pext/pext_module_emoji
+        - env HOME="$PEXTHOME" SSL_CERT_DIR="/etc/ssl/certs" ./Pext-x86_64.AppImage --install-module=https://github.com/Pext/pext_module_emoji
       after_success:
         # pretend PR to upload to transfer.sh -- TODO: remove this line after merging
         - wget https://github.com/probonopd/uploadtool/raw/master/upload.sh
