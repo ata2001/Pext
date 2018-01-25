@@ -11,10 +11,10 @@ install:
 build: off
 
 test_script:
-  - "%PYTHON%\\python.exe -m tox"
+  - "build.cmd %PYTHON%\\python.exe -m tox"
 
 after_test:
-  - "%PYTHON%\\python.exe setup.py bdist_wheel"
+  - "build.cmd %PYTHON%\\python.exe setup.py bdist_wheel"
 
 artifacts:
   - path: dist\*
