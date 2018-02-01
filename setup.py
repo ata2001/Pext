@@ -22,7 +22,7 @@ if sys.platform == 'darwin':
             'iconfile': 'pext/images/scalable/pext.icns'
         }}
     )
-else:
+elif sys.platform != 'win32':
     extra_options = dict(
         data_files=[
             ('share/icons/hicolor/scalable/apps', ['pext/images/scalable/pext.svg']),
