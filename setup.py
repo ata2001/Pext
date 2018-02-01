@@ -31,6 +31,8 @@ elif sys.platform != 'win32':
             ('share/applications', ['pext.desktop']),
         ]
     )
+else:
+    extra_options = dict()
 
 setup(
     name='Pext',
