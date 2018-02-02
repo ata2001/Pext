@@ -1,5 +1,6 @@
 import os
 import sys
+import traceback
 from setuptools import setup
 
 with open(os.path.join('pext', 'VERSION')) as version_file:
@@ -26,7 +27,8 @@ elif sys.platform == 'win32':
     try:
         from cx_Freeze import setup, Executable
     except Exception as e:
-        pass
+        print("cx_Freeze not available: {}".format(e))
+        traceback.print_exc()
 
     extra_options = dict(
         executables=[Executable('pext/__main__.py', base='Win32GUI')],
