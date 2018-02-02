@@ -29,8 +29,7 @@ elif sys.platform == 'win32':
         pass
 
     extra_options = dict(
-        setup_requires=['py2exe'],
-        windows=[{'script': 'pext=pext.__main__:main'}],
+        windows=[{'script': 'pext/__main__.py'}],
         options={'py2exe': {
             'includes': ['sip']
         }}
