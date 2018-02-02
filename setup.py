@@ -23,6 +23,11 @@ if sys.platform == 'darwin':
         }}
     )
 elif sys.platform == 'win32':
+    try:
+        import py2exe
+    except Exception as e:
+        pass
+
     extra_options = dict(
         setup_requires=['py2exe'],
         windows=[{'pext=pext.__main__:main'}],
