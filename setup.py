@@ -22,7 +22,15 @@ if sys.platform == 'darwin':
             'iconfile': 'pext/images/scalable/pext.icns'
         }}
     )
-elif sys.platform != 'win32':
+elif sys.platform == 'win32':
+    extra_options = dict(
+        setup_requires=['py2exe'],
+        windows=[{'pext=pext.__main__:main'}],
+        options={'py2exe': {
+            'includes': ['sip']
+        }}
+    )
+else:
     extra_options = dict(
         data_files=[
             ('share/icons/hicolor/scalable/apps', ['pext/images/scalable/pext.svg']),
@@ -31,8 +39,6 @@ elif sys.platform != 'win32':
             ('share/applications', ['pext.desktop']),
         ]
     )
-else:
-    extra_options = dict()
 
 setup(
     name='Pext',
