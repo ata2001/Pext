@@ -24,14 +24,14 @@ if sys.platform == 'darwin':
     )
 elif sys.platform == 'win32':
     try:
-        import py2exe
+        from cx_Freeze import setup, Executable
     except Exception as e:
         pass
 
     extra_options = dict(
-        windows=[{'script': 'pext/__main__.py'}],
-        options={'py2exe': {
-            'includes': ['sip']
+        executables=[Executable('pext/__main__.py', base='Win32GUI')],
+        options={'build_exe': {
+            'include_msvcr': True
         }}
     )
 else:
