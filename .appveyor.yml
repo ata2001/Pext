@@ -12,7 +12,7 @@ test_script:
   - # "%PYTHON%\\python.exe -m tox"
 
 after_test:
-  - "%PYTHON%\\python.exe setup.py bdist_msi"
+  - "%PYTHON%\\python.exe setup.py bdist_wininst"
 
 artifacts:
   - path: dist\*
