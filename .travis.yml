@@ -7,7 +7,7 @@ before_install:
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
 install:
-    - pip3 install dulwich pyqt5 pyqtdeploy
+    - python3 -m pip install dulwich pyqt5 pyqtdeploy
 
 script:
     - python3 --version
