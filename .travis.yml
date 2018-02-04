@@ -1,15 +1,21 @@
 language: cpp
 
 install:
+    # Qt5
     - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
+    # Python 3.6
+    - sudo add-apt-repository ppa:deadsnakes/ppa
+    # Get all new packages
     - sudo apt-get update -qq
-    - sudo apt-get install -qq qt5-qmake python3-pip python3-pyqt5
+    - sudo apt-get install -qq qt5-qmake python3.6
+    # Install pip deps
+    - python3 -m pip install --user dulwich pyqt5 pyqtdeploy
+    # Set up Qmake
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
-    - python3 -m pip install --user dulwich pyqtdeploy
 
 script:
-    - python3 --version
-    - pyqtdeploy-build --verbose --sysroot /usr pext.pdy
+    - python3.6 --version
+    - python3.6 -m pyqtdeploy build --verbose --sysroot /usr pext.pdy
     - cd build-*
     - qmake -qt=5
     - make
