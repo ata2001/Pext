@@ -13,7 +13,7 @@ install:
 
 script:
     - python3 --version
-    - pyqtdeploy-build pext.pdy
+    - pyqtdeploy-build --sysroot $HOME/virtualenv/python3.6.3 pext.pdy
     - cd build-*
     - qmake -qt=5
     - make
