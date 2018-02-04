@@ -9,7 +9,7 @@ install:
 
 script:
     - python3 --version
-    - pyqtdeploy-build --sysroot /usr pext.pdy
+    - pyqtdeploy-build --verbose --sysroot /usr pext.pdy
     - cd build-*
     - qmake -qt=5
     - make
