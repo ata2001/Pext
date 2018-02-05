@@ -8,7 +8,7 @@ install:
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
     # Python 3.6.4
     - wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz -O python.tar.xz
-    - tar -xfv python.tar.xz
+    - tar -xvf python.tar.xz
     - cd python
     - export SYSROOT="$HOME/python_instance"
     - ./configure --prefix=$SYSROOT
