@@ -1,29 +1,12 @@
 language: cpp
+sudo: required
 
-install:
-    # Qt5
-    - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
-    - sudo apt-get update -qq
-    - sudo apt-get install -qq qt5-qmake qtdeclarative5-dev
-    - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
-    # Python 3.6.4
-    - BUILD_DIR=$(mktemp -d -p /tmp python-build-XXXXXX)
-    - wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz -O python.tar.xz
-    - tar -xf python.tar.xz -C $BUILD_DIR
-    - pushd $BUILD_DIR
-    - cd Python-*
-    - export SYSROOT=`pwd`
-    - export PATH="$SYSROOT/bin:$PATH"
-    - ./configure --prefix=$SYSROOT
-    - make
-    - make install
-    - popd
-    # Install pip deps
-    - export PYTHONPATH=$SYSROOT/lib/python3.6/site-packages
-    - pip3 install dulwich pyqt5 pyqtdeploy
+services:
+    - docker
+
+before_install:
+    - docker pull ubuntu:16.04
 
 script:
-    - pyqtdeploy-build --verbose pext.pdy
-    - cd build-*
-    - $QMAKE
-    - make
+    - docker run ubuntu /bin/sh -c "apt-get update -qq; apt-get install -qq qt5-qmake qtdeclarative5-dev python3-dev git; export SYSROOT=/usr; pip3 install dulwich pyqt5 pyqtdeploy; git clone https://github.com/Pext/Pext; cd Pext; pyqtdeploy-build --verbose pext.pdy; cd build-*; qmake -qt=5; make"
+
