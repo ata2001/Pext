@@ -20,5 +20,5 @@ install:
 script:
     - pyqtdeploy-build --verbose pext.pdy
     - cd build-*
-    - qmake -qt=5
+    - qmake
     - make
