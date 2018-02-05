@@ -9,6 +9,7 @@ install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq qt5-qmake python3.6
     # Install pip deps
+    - python3.6 -m ensurepip --user
     - python3.6 -m pip install --user dulwich pyqt5 pyqtdeploy
     # Set up Qmake
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
