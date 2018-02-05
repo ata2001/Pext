@@ -3,20 +3,23 @@ language: cpp
 install:
     # Qt5
     - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
-    # Python 3.6
-    - sudo add-apt-repository --yes ppa:jonathonf/python-3.6
     # Get all new packages
     - sudo apt-get update -qq
-    - sudo apt-get install -qq qt5-qmake python3.6
+    - sudo apt-get install -qq qt5-qmake
+    # Miniconda
+    - export SYSROOT="$HOME/miniconda"
+    - wget https://repo.continuum.io/miniconda/Miniconda3-3.7.0-Linux-x86_64.sh -O ~/miniconda.sh
+    - bash ~/miniconda.sh -b -p $SYSROOT
+    - export PATH="$SYSROOT/bin:$PATH"
+    - source $SYSROOT/bin/activate
     # Install pip deps
-    - python3.6 -m ensurepip --user
-    - python3.6 -m pip install --user dulwich pyqt5 pyqtdeploy
+    - python -m pip install --user dulwich pyqt5 pyqtdeploy
     # Set up Qmake
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
 script:
-    - python3.6 --version
-    - python3.6 -m pyqtdeploy build --verbose --sysroot /usr pext.pdy
+    - python --version
+    - python -m pyqtdeploy build --verbose pext.pdy
     - cd build-*
     - qmake -qt=5
     - make
