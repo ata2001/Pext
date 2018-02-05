@@ -4,7 +4,7 @@ install:
     # Qt5
     - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
     # Python 3.6
-    - sudo add-apt-repository --yes ppa:deadsnakes/ppa
+    - sudo add-apt-repository --yes ppa:jonathonf/python-3.6
     # Get all new packages
     - sudo apt-get update -qq
     - sudo apt-get install -qq qt5-qmake python3.6
