@@ -17,12 +17,12 @@ install:
     - ./configure --prefix=$SYSROOT
     - make
     - make install
-    - cd
     # Install pip deps
-    - pip3 install dulwich pyqt5 pyqtdeploy
+    - pip3 install --user dulwich pyqt5 pyqtdeploy
 
 script:
-    - pyqtdeploy-build --verbose pext-travis.pdy
+    - cd $HOME/Pext/Pext
+    - pyqtdeploy-build --verbose pext.pdy
     - cd build-*
     - $QMAKE
     - make
