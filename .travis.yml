@@ -15,7 +15,7 @@ install:
     # Install pip deps
     - pip install dulwich pyqt5 pyqtdeploy
     # Add Python source for qmake
-    - conda install debug
+    - conda install --yes debug
     # Set up Qmake
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
