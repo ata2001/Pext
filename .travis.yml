@@ -7,10 +7,11 @@ install:
     - sudo apt-get install -qq qt5-qmake tree
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
     # Python 3.6.4
+    - BUILD_DIR=$(mktemp -d -p /tmp python-build-XXXXXX)
     - wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz -O python.tar.xz
-    - tar -xvf python.tar.xz
-    - cd python
-    - export SYSROOT="$HOME/python_instance"
+    - tar -xvf python.tar.xz -C $BUILD_DIR
+    - cd $BUILD_DIR
+    - export SYSROOT="$BUILD_DIR"
     - ./configure --prefix=$SYSROOT
     - make
     - make install
@@ -21,7 +22,7 @@ install:
 
 script:
     - tree $SYSROOT
-    - pyqtdeploy-build --verbose pext.pdy
+    - pyqtdeploy-build --verbose pext-travis.pdy
     - cd build-*
     - qmake
     - make
