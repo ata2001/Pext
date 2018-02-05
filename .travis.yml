@@ -7,7 +7,7 @@ install:
     - sudo apt-get install -qq qt5-qmake tree
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
     # Python 3.6.4
-    - wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz python.tar.xz
+    - wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz -O python.tar.xz
     - tar -xfv python.tar.xz
     - cd python
     - export SYSROOT="$HOME/python_instance"
