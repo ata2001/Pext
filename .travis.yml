@@ -8,9 +8,8 @@ install:
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
     # Python 3.6.4
     - BUILD_DIR=$(mktemp -d -p /tmp python-build-XXXXXX)
-    - pushd $BUILD_DIR
     - wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz -O python.tar.xz
-    - tar -xf python.tar.xz
+    - tar -xf python.tar.xz -C $BUILD_DIR
     - cd Python-*
     - export SYSROOT=`pwd`
     - export PATH="$SYSROOT/bin:$PATH"
