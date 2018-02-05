@@ -20,7 +20,7 @@ install:
     - popd
     # Install pip deps
     - export PYTHONPATH=$SYSROOT/lib/python3.6/site-packages
-    - pip3 install --user dulwich pyqt5 pyqtdeploy
+    - pip3 install dulwich pyqt5 pyqtdeploy
 
 script:
     - pyqtdeploy-build --verbose pext.pdy
