@@ -19,7 +19,7 @@ install:
 
 script:
     - python --version
-    - python -m pyqtdeploy build --verbose pext.pdy
+    - pyqtdeploy build --verbose pext.pdy
     - cd build-*
     - qmake -qt=5
     - make
