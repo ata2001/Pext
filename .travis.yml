@@ -11,7 +11,8 @@ install:
     - wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz -O python.tar.xz
     - tar -xvf python.tar.xz -C $BUILD_DIR
     - cd $BUILD_DIR
-    - export SYSROOT="$BUILD_DIR"
+    - cd Python-*
+    - export SYSROOT=`pwd`
     - ./configure --prefix=$SYSROOT
     - make
     - make install
