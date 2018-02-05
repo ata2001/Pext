@@ -10,18 +10,18 @@ install:
     - BUILD_DIR=$(mktemp -d -p /tmp python-build-XXXXXX)
     - wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz -O python.tar.xz
     - tar -xf python.tar.xz -C $BUILD_DIR
-    - cd $BUILD_DIR
+    - pushd $BUILD_DIR
     - cd Python-*
     - export SYSROOT=`pwd`
     - export PATH="$SYSROOT/bin:$PATH"
     - ./configure --prefix=$SYSROOT
     - make
     - make install
+    - popd
     # Install pip deps
     - pip3 install --user dulwich pyqt5 pyqtdeploy
 
 script:
-    - cd $HOME/Pext/Pext
     - pyqtdeploy-build --verbose pext.pdy
     - cd build-*
     - $QMAKE
