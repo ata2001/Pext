@@ -13,12 +13,11 @@ install:
     - export PATH="$SYSROOT/bin:$PATH"
     - . $SYSROOT/bin/activate
     # Install pip deps
-    - python -m pip install --user dulwich pyqt5 pyqtdeploy
+    - pip install --user dulwich pyqt5 pyqtdeploy
     # Set up Qmake
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
 script:
-    - python --version
     - pyqtdeploy-build --verbose pext.pdy
     - cd build-*
     - qmake -qt=5
