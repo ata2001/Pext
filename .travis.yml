@@ -3,21 +3,21 @@ language: cpp
 install:
     # Qt5
     - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
-    # Get all new packages
     - sudo apt-get update -qq
     - sudo apt-get install -qq qt5-qmake tree
-    # Miniconda
-    - export SYSROOT="$HOME/miniconda"
-    - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
-    - bash ~/miniconda.sh -b -p $SYSROOT
-    - export PATH="$SYSROOT/bin:$PATH"
-    - . $SYSROOT/bin/activate
-    # Install pip deps
-    - pip install dulwich pyqt5 pyqtdeploy
-    # Add Python source for qmake
-    - conda install --yes debug
-    # Set up Qmake
     - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+    # Python 3.6.4
+    - wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz python.tar.xz
+    - tar -xfv python.tar.xz
+    - cd python
+    - export SYSROOT="$HOME/python_instance"
+    - ./configure --prefix=$SYSROOT
+    - make
+    - make install
+    - tree $SYSROOT
+    - export PATH="$SYSROOT/bin:$PATH"
+    # Install pip deps
+    - pip3 install dulwich pyqt5 pyqtdeploy
 
 script:
     - tree $SYSROOT
