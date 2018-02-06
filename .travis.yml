@@ -8,5 +8,5 @@ before_install:
     - docker pull ubuntu:16.04
 
 script:
-    - docker run -v build/Pext:/root/Pext ubuntu /bin/sh -c "apt-get update -qq && apt-get install -qq qt5-qmake qtdeclarative5-dev python3-pip python3-dev git && export SYSROOT=/usr && python3 -m pip install dulwich pyqt5 pyqtdeploy && cd /root/Pext && pyqtdeploy-build --verbose pext.pdy && cd build-* && qmake -qt=5 && make"
+    - docker run -v $HOME/build/Pext:/root/Pext ubuntu /bin/sh -c "apt-get update -qq && apt-get install -qq qt5-qmake qtdeclarative5-dev python3-pip python3-dev git && export SYSROOT=/usr && python3 -m pip install dulwich pyqt5 pyqtdeploy && cd /root/Pext && pyqtdeploy-build --verbose pext.pdy && cd build-* && qmake -qt=5 && make"
 
