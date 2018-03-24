@@ -21,9 +21,8 @@ if sys.platform == 'darwin':
         options={'py2app': {
             'argv_emulation': True,
             'iconfile': 'pext/images/scalable/pext.icns',
-            'emulate_shell_environment': 1,
             'includes': ['pty', 'readline'],
-            'packages': ['certifi', 'distutils', 'pip', 'setuptools']
+            'packages': ['certifi', 'distutils', 'pip']
         }}
     )
 else:
